@@ -39,18 +39,18 @@ var mapStyle = {
     color: "blue",
     fillColor: "yellow",
     weight: 1
-  };
+  }
   
 // Grabbing our GeoJSON data.
 d3.json(torontoHoods).then(function(data) {
     console.log(data);
   // Creating a GeoJSON layer with the retrieved data.
-L.geoJSON(data).addTo(map);
-//   L.geoJSON(data, {
-//     style: mapStyle,
-//     onEachFeature: function(feature, layer){
-//         layer.bindPopup("<h3>Neighborhood: " + features.properties.AREA_NAME + "</h3>")
-//     }
-//  }).addTo(map);
+// L.geoJSON(data).addTo(map);
+  L.geoJSON(data, {
+    style: mapStyle,
+    onEachFeature: function(features, layer){
+        layer.bindPopup("<h3>Neighborhood: " + features.properties.AREA_NAME + "</h3>")
+    }
+ }).addTo(map);
 });
 
